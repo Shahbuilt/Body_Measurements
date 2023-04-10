@@ -32,6 +32,7 @@ from src.util import renderer as vis_util
 from src.util import image as img_util
 from src.util import openpose as op_util
 import src.config
+
 from src.RunModel import RunModel
 
 flags.DEFINE_string('img_path', 'data/k3.png', 'Image to run')
