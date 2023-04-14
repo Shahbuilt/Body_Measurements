@@ -8,10 +8,13 @@ from __future__ import print_function
 
 import numpy as np
 import cv2
-
-from opendr.camera import ProjectPoints
-from opendr.renderer import ColoredRenderer
-from opendr.lighting import LambertianPointLight
+# In pyrender version 0.1.36, the ProjectPoints class is located in pyrender.primitives.camera, so you can import it like this
+# from pyrender.primitives.camera import ProjectPoints
+# from pyrender.renderer import ColoredRenderer
+# from pyrender.lighting import LambertianPointLight
+from pyrender.camera import PerspectiveCamera, OrthographicCamera
+from pyrender import OffscreenRenderer
+from pyrender import PointLight
 
 colors = {
     # colorbline/print/copy safe:
@@ -393,7 +396,8 @@ def draw_skeleton(input_image, joints, draw_edges=True, vis=None, radius=None):
         if vis is not None and vis[child] == 0:
             continue
         if draw_edges:
-            cv2.circle(image, (point[0], point[1]), radius, tuple([int(x) for x in colors['white']]),-1)#colors['white']
+            cv2.circle(image, (point[0], point[1]), radius, tuple(
+                [int(x) for x in colors['white']]), -1)  # colors['white']
             cv2.circle(image, (point[0], point[1]), radius - 1,
                        tuple([int(x) for x in colors[jcolors[child]]]), -1)
         else:

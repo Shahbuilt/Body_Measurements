@@ -16,9 +16,9 @@ from __future__ import division
 from __future__ import print_function
 
 import tensorflow as tf
-import tensorflow.tf_slim as slim
+import tensorflow.keras.models
 
-from tensorflow.contrib.layers.python.layers.initializers import variance_scaling_initializer
+from tensorflow.keras.initializers import VarianceScaling
 
 
 def Encoder_resnet(x, is_training=True, weight_decay=0.001, reuse=False):
